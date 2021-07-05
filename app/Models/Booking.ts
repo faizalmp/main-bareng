@@ -3,20 +3,6 @@ import { BaseModel, column, belongsTo, BelongsTo, hasMany, HasMany, manyToMany, 
 import User from './User'
 import Field from './Field'
 
-/** 
-*  @swagger
-*  definitions:
-*    Booking:
-*      type: object
-*      properties:
-*        play_date_start:
-*          type: datetime
-*        play_date_end:
-*          type: datetime
-*      required:
-*        - play_date_start
-*/
-
 export default class Booking extends BaseModel {
   @column({ isPrimary: true })
   public id: number

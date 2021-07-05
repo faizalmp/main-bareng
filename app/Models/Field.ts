@@ -3,26 +3,6 @@ import { BaseModel, column, belongsTo, BelongsTo, hasMany, HasMany } from '@ioc:
 import Venue from './Venue'
 import Booking from './Booking'
 
-/** 
-*  @swagger
-*  definitions:
-*    Field:
-*      type: object
-*      properties:
-*        id:
-*          type: uint
-*        name:
-*          type: string
-*        type:
-*          type: string
-*        venue_id:
-*          type: number
-*      required:
-*        - name
-*        - type
-*        - venue_id
-*/
-
 export default class Field extends BaseModel {
   @column({ isPrimary: true })
   public id: number

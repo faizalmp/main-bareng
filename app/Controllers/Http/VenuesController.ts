@@ -4,26 +4,6 @@ import Venue from 'App/Models/Venue'
 
 export default class VenuesController {
 
-/**
-  * @swagger
-  * /api/v1/venues:
-  *   get:
-  *     security:
-  *       - bearerAuth: []
-  *     tags:
-  *       - Venues
-  *     summary: Get all venues
-  *     responses:
-  *       '200':
-  *         description: Success
-  *       '400':
-  *         description: Failed
-  *       '401':
-  *         description: Unauthorized
-  *       '500':
-  *         description: Internal Server Error
-*/
-
     public async index({ response }: HttpContextContract) {
         let venues = await Venue.query().preload('user', (query) => {
             query.select('id', 'name')
@@ -35,35 +15,6 @@ export default class VenuesController {
         }
         return response.badRequest({ message: 'No data' })
     }
-
-/**
-  * @swagger
-  * /api/v1/venues:
-  *   post:
-  *     security:
-  *       - bearerAuth: []
-  *     tags:
-  *       - Venues
-  *     summary: Create Venue
-  *     requestBody:
-  *       required: true
-  *       content:
-  *         application/x-www-form-urlencoded:
-  *           schema:
-  *             $ref: '#definitions/Venue'
-  *         application/json:
-  *           schema:
-  *             $ref: '#definitions/Venue'
-  *     responses:
-  *       '200':
-  *         description: Success
-  *       '400':
-  *         description: Failed
-  *       '401':
-  *         description: Unauthorized
-  *       '500':
-  *         description: Internal Server Error
-*/
 
     public async store({ request, response, auth }: HttpContextContract) {
         try {
@@ -82,35 +33,7 @@ export default class VenuesController {
             console.log(error)
             return response.badRequest({ errors: error.messages })
         }
-    }
-
-/**
-  * @swagger
-  * /api/v1/venues/{id}:
-  *   get:
-  *     security:
-  *       - bearerAuth: []
-  *     parameters:
-  *       - in: path
-  *         name: id
-  *         required: true
-  *         schema:
-  *           type: number
-  *           minimum: 1
-  *         description: Venue ID
-  *     tags:
-  *       - Venues
-  *     summary: Get Venue by Id
-  *     responses:
-  *       '200':
-  *         description: Success
-  *       '400':
-  *         description: Failed
-  *       '401':
-  *         description: Unauthorized
-  *       '500':
-  *         description: Internal Server Error
-*/    
+    }  
 
     public async show({ params, response }: HttpContextContract) {
         let { id } = params
@@ -120,43 +43,6 @@ export default class VenuesController {
         }
         return response.badRequest({ message: 'No such data to show' })
     }
-
-/**
-  * @swagger
-  * /api/v1/venues/{id}:
-  *   put:
-  *     security:
-  *       - bearerAuth: []
-  *     parameters:
-  *       - in: path
-  *         name: id
-  *         required: true
-  *         schema:
-  *           type: number
-  *           minimum: 1
-  *         description: Venue ID
-  *     tags:
-  *       - Venues
-  *     summary: Update Venue
-  *     requestBody:
-  *       required: true
-  *       content:
-  *         application/x-www-form-urlencoded:
-  *           schema:
-  *             $ref: '#definitions/Venue'
-  *         application/json:
-  *           schema:
-  *             $ref: '#definitions/Venue'
-  *     responses:
-  *       '200':
-  *         description: Success
-  *       '400':
-  *         description: Failed
-  *       '401':
-  *         description: Unauthorized
-  *       '500':
-  *         description: Internal Server Error
-*/
 
     public async update({ params, request, response }: HttpContextContract) {
         const payload = await request.validate(VenueValidator)

@@ -1,21 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
-/** 
-*  @swagger
-*  definitions:
-*    OtpCode:
-*      type: object
-*      properties:
-*        otp_code:
-*          type: number
-*        users_id:
-*          type: number
-*      required:
-*        - otp_code
-*        - users_id
-*/
-
 export default class OtpCode extends BaseModel {
   @column({ isPrimary: true })
   public id: number

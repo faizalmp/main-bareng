@@ -1,0 +1,10 @@
+definitions:
+  Booking:
+    type: object
+    properties:
+      play_date_start:
+        type: datetime
+      play_date_end:
+        type: datetime
+    required:
+      - play_date_start

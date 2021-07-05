@@ -1,0 +1,16 @@
+definitions:
+  Field:
+    type: object
+    properties:
+      id:
+        type: uint
+      name:
+        type: string
+      type:
+        type: string
+      venue_id:
+        type: number
+    required:
+      - name
+      - type
+      - venue_id
