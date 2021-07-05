@@ -79,6 +79,8 @@ export default class BookingsController {
         try {
             let { id } = params
             const payload = await request.validate(BookingValidator)
+            if(!payload)
+                return response.badRequest({ message: 'No such data to update' })
 
             let booking = new Booking()
             booking.playDateStart = request.input('play_date_start')
@@ -139,6 +141,8 @@ export default class BookingsController {
 
     public async update({ params, request, response }: HttpContextContract) {
         const payload = await request.validate(BookingValidator)
+        if(!payload)
+            return response.badRequest({ message: 'No such data to update' })
         let { id } = params
 
         let booking = await Booking.findOrFail(id)
