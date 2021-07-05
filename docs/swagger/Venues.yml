@@ -14,8 +14,6 @@
         description: Unauthorized
       '500':
         description: Internal Server Error
-
-/api/v1/venues:
   post:
     security:
       - bearerAuth: []
@@ -65,9 +63,6 @@
         description: Unauthorized
       '500':
         description: Internal Server Error
-
-
-/api/v1/venues/{id}:
   put:
     security:
       - bearerAuth: []
