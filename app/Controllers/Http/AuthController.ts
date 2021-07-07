@@ -26,7 +26,7 @@ export default class AuthController {
 
             await Mail.send((message) => {
                 message
-                    .from("admin@mainbareng.com")
+                    .from("faizalempe@sanberdev.com")
                     .to(payload.email)
                     .subject('OTP Verification')
                     .htmlView('emails/otp_verification', { otp_code })
